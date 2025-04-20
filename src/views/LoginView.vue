@@ -71,7 +71,7 @@ const funLogin = async ()=>{
     try {
 
       const resultOfLogin = await axios.post(
-          `http://localhost:8000/api/v1/login/`,
+          `https://awnams1.pythonanywhere.com/api/v1/login/`,
           {
             username: submitLoginForm.value.username,
             password: submitLoginForm.value.password

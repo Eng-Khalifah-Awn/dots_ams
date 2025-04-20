@@ -1,7 +1,8 @@
 import axios from 'axios';
 import Cookies from "js-cookie";
 // export const defaultAPI = 'https://foods.alkarmoshy.com/cashier_api/';
-export const defaultAPI = 'http://127.0.0.1:8000/api/v1/';
+// export const defaultAPI = 'http://127.0.0.1:8000/api/v1/';
+export const defaultAPI = 'https://awnams1.pythonanywhere.com/api/v1/';
 axios.defaults.baseURL = defaultAPI;
 export const token = Cookies.get('tokenOfUser')
 
