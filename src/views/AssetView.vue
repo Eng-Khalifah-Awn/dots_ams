@@ -47,8 +47,8 @@
 
                          :globalFilterFields="['asset_number', 'use_it_by']">
 
-                <template #empty>No assets found.</template>
-                <template #loading>Loading asset data. Please wait.</template>
+                <template #empty>{{ $t("no_assets_found") }}</template>
+                <templatse #loading>{{ $t("loading_asset_please_wait") }}</templatse>
 
                 <!-- 🧱 Columns -->
                 <Column field="asset_number" header="Asset Number" sortable>
@@ -105,7 +105,7 @@
             <div class="py-4 container-fluid" v-else>
               <div class="row">
                 <div class="card">
-                  <img class="col-6" src="../../src/assets/img/logo_dots_remove_background.png" alt="logo DOTS">
+                  <img class="col-12" src="../../src/assets/img/logo_dots_remove_background.png" alt="logo DOTS">
                 </div>
               </div>
             </div>

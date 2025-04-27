@@ -21,7 +21,7 @@
                     <input v-model="listOfUser.first_name" type="text" class="form-control" id="lbltxtName" readonly>
                   </div> <!--first_name-->
                   <div class="col-lg-6 col-md-6 col-sm-6 ">
-                    <label for="lbltxtName" class="form-label">{{ $t('name_asset') }}</label>
+                    <label for="lbltxtName" class="form-label">{{ $t('last_name') }}</label>
                     <input v-model="listOfUser.last_name" type="text" class="form-control" id="lbltxtName" readonly>
                   </div> <!--last_name-->
                 </div>

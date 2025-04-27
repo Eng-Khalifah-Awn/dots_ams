@@ -200,7 +200,7 @@ const routes = [
         component: AddDepartmentCompo,
       },
       {
-        path: "/update-departments/:departmentsId",
+        path: "/update-departments/:departmentId",
         name: "UpdateDepartment",
         component: UpdateDepartmentCompo,
       },

@@ -54,8 +54,7 @@
                 <Column field="name_company" header="Company Name" sortable></Column>
                 <Column :exportable="false" style="min-width: 12rem">
                   <template #body="slotProps">
-                    <button type="button" class="btn btn-primary" @click="editProduct(slotProps.data)">View</button>
-                    <button type="button" class="btn btn-success ms-1 me-1">Edit</button>
+                    <button type="button" class="btn btn-success ms-1 me-1" @click="editProduct(slotProps.data)">Edit</button>
                     <button type="button" class="btn btn-danger">Delete</button>
                   </template>
                 </Column>
@@ -66,7 +65,7 @@
             <div class="py-4 container-fluid" v-else>
               <div class="row">
                 <div class="card">
-                  <img class="col-6" src="../../src/assets/img/logo_dots_remove_background.png" alt="logo alqarmoshi">
+                  <img class="col-12" src="../../src/assets/img/logo_dots_remove_background.png" alt="logo alqarmoshi">
                 </div>
               </div>
             </div>
@@ -92,39 +91,10 @@ import router from "@/router/router.js";
 const listOfCompanies = ref([]);
 const appStore = useAppStore();
 
-/*const listOfUsers = ref([
-  {id: 1, name: 'Ahmed', phone_number: '789456123', branchName: 'Branch Name', role: 'Admin'},
-  {id: 2, name: 'Ahmed', phone_number: '789456123', branchName: 'Branch Name', role: 'Admin'},
-  {id: 3, name: 'Ahmed', phone_number: '789456123', branchName: 'Branch Name', role: 'Admin'},
-  {id: 4, name: 'Ahmed', phone_number: '789456123', branchName: 'Branch Name', role: 'Admin'},
-  {id: 5, name: 'Ahmed', phone_number: '789456123', branchName: 'Branch Name', role: 'Admin'},
 
-]);*/
-
-/*const listOfBranches = ref([]);
-const totalSteps = 3;
-const {
-  loading,
-  loadingPercentage,
-  updateLoadingPercentage,
-  completeLoading,
-} = useLoadingProgress(totalSteps);*/
-
-
-/*
-const userWithBranchNames = computed(()=>{
-  return listOfUsers.value.map(user=>{
-    const branch = listOfBranches.value.find(branch => branch.id === user.branch_id);
-    return{
-      ...user,
-      branchName: branch ? branch.name : "Unknown Branch",
-    };
-  });
-});
-*/
 const loading = ref(true)
-const editProduct = (brand) => {
-  router.push({ name: 'UpdateBrand', params: { brandId: brand.id } })
+const editProduct = (company) => {
+  router.push({ name: 'UpdateCompany', params: { companyId: company.id } })
 }
 const rowsPerPage = ref(10)
 const filters = ref({

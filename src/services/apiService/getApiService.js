@@ -24,12 +24,18 @@ export default axios.interceptors.request.use(
 
 export const fetchUsers = () => axios.get("user");
 export const fetchUserID = (idUser) => axios.get(`user/${idUser}`);
+export const addUser = () => axios.get(`user/`);
 export const fetchAssets = () => axios.get("assets");
 export const fetchAssetID = (idAsset) => axios.get(`assets/${idAsset}`);
+
 export const fetchBrands = () => axios.get("brand");
+export const fetchBrandID = (idBrand) => axios.get(`brand/${idBrand}`);
 export const fetchCategories = () => axios.get("category");
+export const fetchCategoryID = (idCategory) => axios.get(`category/${idCategory}`);
 export const fetchCompanies = () => axios.get("company");
+export const fetchCompanyID = (idCompany) => axios.get(`company/${idCompany}`);
 export const fetchDepartments = () => axios.get("department");
+export const fetchDepartmentID = (idDepartment) => axios.get(`department/${idDepartment}`);
 export const fetchAssetsImages = () => axios.get("assets_images");
 
 /*

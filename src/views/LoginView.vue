@@ -18,7 +18,12 @@
             <input v-model="submitLoginForm.password" type="password" class="form-control" id="edtxtPassword">
             <span class="text-danger" v-if="v$.password.$error">{{ $t('password_is_required') }}</span>
           </div>
-          <button type="submit" class="form-submit-btn">{{ $t('submit') }}</button>
+          <button type="submit" class="form-submit-btn" :disabled="loading">
+
+            <span v-if="loading" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span v-else>{{ $t('submit') }}</span>
+          </button>
+
         </form>
       </div>
   </div>
@@ -39,6 +44,10 @@ import Cookies from "js-cookie";
 
 const appStore = useAppStore();
 const { t } = useI18n()
+
+const loading = ref(false);
+
+
 
 const hasUpperCase = (value) => /[A-Z]/.test(value) || 'Password must include at least one uppercase letter';
 const hasSpecialChar = (value) => /[!@#$%^&*]/.test(value) || 'Password must include at least one special character';
@@ -66,6 +75,7 @@ const rules = computed(()=>({
 const v$ = useVuelidate(rules, submitLoginForm)
 
 const funLogin = async ()=>{
+  loading.value = true;
   v$.value.$touch();
   if (!v$.value.$invalid){
     try {
@@ -98,11 +108,13 @@ const funLogin = async ()=>{
           httpOnly: false,
         });
         // appStore.login(await resultOfLogin.data.access);
+        loading.value = false;
         appStore.redirectTo("home");
         setTimeout(()=>{
           showToast(t("Welcome to Dots Asset Management"), 'success')
         }, 1000)
       }else {
+        loading.value = false;
         setTimeout(()=>{
           showToast(t("You should go to next page"), 'error')
         }, 1000)
@@ -112,6 +124,7 @@ const funLogin = async ()=>{
 
 
     }catch (error) {
+      loading.value = false;
       if (error.response){
         setTimeout(()=>{
           showToast(error.response.data.detail, 'error')
@@ -123,6 +136,7 @@ const funLogin = async ()=>{
     }
   }
   else {
+    loading.value = false;
     console.log("invalid form")
   }
 }

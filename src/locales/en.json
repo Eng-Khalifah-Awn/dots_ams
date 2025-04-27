@@ -3,15 +3,48 @@
   "begin_general_translate": "//////////////",
   "hello_I_am_dashboard": "Dashboard",
   "home": "Home",
-  "report_asset": "Report Asset",
-  "add_asset": "Add Asset",
-  "edit_asset": "Edit Asset",
+  "add": "Add",
+
+
 
   "dashboard_home": "Dashboard",
 
 
-  "end_general_translate": "//////////////"
+  "end_general_translate": "//////////////",
 
+
+  "begin-assets-translate": "//////////////",
+  "add_asset": "Add Asset",
+  "edit_asset": "Edit Asset",
+  "asset_table": "Assets",
+  "no_assets_found": "No assets found.",
+  "loading_asset_please_wait": "Loading asset data. Please wait.",
+
+  "end-assets-translate": "//////////////",
+
+  "begin-brands-translate": "//////////////",
+
+  "end-brands-translate": "//////////////",
+
+  "begin-category-translate": "//////////////",
+
+  "end-category-translate": "//////////////",
+
+  "begin-company-translate": "//////////////",
+
+  "end-company-translate": "//////////////",
+
+  "begin-department-translate": "//////////////",
+
+  "end-department-translate": "//////////////",
+
+  "begin-user-translate": "//////////////",
+
+  "end-user-translate": "//////////////",
+
+  "begin-reports-translate": "//////////////",
+  "report_asset": "Report Asset",
+  "end-reports-translate": "//////////////"
 
 
 
