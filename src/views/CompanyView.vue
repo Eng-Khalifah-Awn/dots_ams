@@ -18,7 +18,7 @@
           <div v-else>
             <div class="card-header">
               <div class="row">
-                <h6 class="col-lg-3 col-md-3 col-sm-3">{{ $t('brand_table') }}</h6>
+                <h6 class="col-lg-3 col-md-3 col-sm-3">{{ $t('company_table') }}</h6>
                 <div class="col-lg-5 col-md-5 col-sm-5">
                   <input class="form-control " v-model="filters['global'].value" placeholder="Search...">
                 </div>

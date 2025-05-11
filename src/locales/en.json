@@ -12,6 +12,29 @@
 
   "end_general_translate": "//////////////",
 
+  "begin_custody_form_translate": "//////////////",
+  "custody_company_form": "Custody",
+  "name_employee": "Employee Name",
+  "name_should_be_3_character": "Name should contain 3 letters at least",
+  "id_employee": "Employee ID",
+  "id_should_be_3_character": "ID employee should contain 10 digits",
+  "name_position_employee": "Position Name",
+  "position_should_be_3_character": "Name position should contain 3 letters at least",
+  "date": "Date",
+  "date_should_be_3_character": "You should take a date",
+  "custody_items": "Custody Items",
+  "name_custody": "Name",
+  "count_custody": "Count",
+  "condition_custody": "Situation",
+  "note_custody": "Note",
+  "new_device": "New",
+  "used_device": "Used",
+  "add_custody": "Add Custody",
+  "print_custody": "Print",
+
+
+  "end_custody_form_translate": "//////////////",
+
 
   "begin-assets-translate": "//////////////",
   "add_asset": "Add Asset",

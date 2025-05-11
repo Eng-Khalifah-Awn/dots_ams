@@ -15,6 +15,12 @@
       <router-link class="text-white" :to="{name: 'Departments'}">{{ $t('departments') }}</router-link>
       <router-link class="text-white" :to="{name: 'Users'}">{{ $t('users') }}</router-link>
 
+      <a data-bs-toggle="collapse" href="#collapseCustody" role="button" aria-expanded="false" aria-controls="collapseCustody">{{$t('custody')}}</a>
+      <div class="collapse m-1 rounded bg-white" id="collapseCustody" >
+        <router-link class="text-black" :to="{name: 'CustodyTools'}">{{ $t('dots_company') }}</router-link>
+        <router-link class="text-black" :to="{name: 'CustodyTools'}">{{ $t('tools_company') }}</router-link>
+        <router-link class="text-black" :to="{name: 'CustodyTools'}">{{ $t('wosol_company') }}</router-link>
+      </div>  <!--Reports-->
       <a data-bs-toggle="collapse" href="#collapseReports" role="button" aria-expanded="false" aria-controls="collapseReports">{{$t('reports')}}</a>
       <div class="collapse m-1 rounded bg-white" id="collapseReports" >
         <router-link class="text-black" :to="{name: 'home'}">{{ $t('show_reports') }}</router-link>
@@ -22,6 +28,7 @@
         <router-link class="text-black" :to="{name: 'home'}">{{ $t('show_reports') }}</router-link>
         <router-link class="text-black" :to="{name: 'home'}">{{ $t('show_reports') }}</router-link>
       </div>  <!--Reports-->
+
 
 
 

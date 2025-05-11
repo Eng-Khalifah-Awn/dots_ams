@@ -34,6 +34,9 @@ import UpdateDepartmentCompo from "@/components/Department/UpdateDepartmentCompo
 import AddDepartmentCompo from "@/components/Department/AddDepartmentCompo.vue";
 import ShowDepartmentCompo from "@/components/Department/ShowDepartmentCompo.vue";
 import DepartmentView from "@/views/DepartmentView.vue";
+import TraningFormView from "@/views/TrainingFormView.vue";
+import Tools from "@/components/Custody/ToolsView.vue";
+import ToolsView from "@/components/Custody/ToolsView.vue";
 
 const routes = [
   {
@@ -44,7 +47,6 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: LoginView,
-
   },
   {
     path:'/dashboard',
@@ -248,6 +250,16 @@ const routes = [
 
 
     ]
+  },
+  {
+    path: '/custody-tools',
+    name: 'CustodyTools',
+    component: ToolsView,
+  },
+  {
+    path: '/training',
+    name: 'Training',
+    component: TraningFormView,
   },
 ]
 

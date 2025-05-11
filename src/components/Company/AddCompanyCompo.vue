@@ -6,12 +6,12 @@
         <h6 class="col-lg-10 col-md-10 col-sm-10">{{ $t('add_company') }}</h6>
       </div>
       <div class="card-body">
-        <form @submit.prevent="submitAddUserForm">
+        <form @submit.prevent="submitAddCompanyForm">
           <div class="row mb-3">
             <div class="col-lg-12 col-md-12 col-sm-12 ">
-              <label for="lbltxtName" class="form-label">{{ $t('name_company') }}</label>
-              <input v-model="addUserForm.name_asset" type="text" class="form-control" id="lbltxtName" readonly>
-              <span class="text-danger" v-if="v$.name_asset.$error">{{ $t('name_should_be_3_character') }}</span>
+              <label for="lbltxtNameCompany" class="form-label">{{ $t('name_company') }}</label>
+              <input v-model="addCompanyForm.name_company" type="text" class="form-control" id="lbltxtNameCompany" required>
+              <span class="text-danger" v-if="v$.name_company.$error">{{ $t('name_should_be_3_character') }}</span>
 
             </div> <!--name_company-->
           </div>
@@ -44,57 +44,32 @@ checkUserRole(['isAdmin'])
 const { t } = useI18n()
 const appStore = useAppStore();
 const token = Cookies.get('tokenOfUser')
-const hasUpperCase = (value) => /[A-Z]/.test(value) || 'Password must include at least one uppercase letter';
-const hasSpecialChar = (value) => /[!@#$%^&*]/.test(value) || 'Password must include at least one special character';
-const hasNumber = (value) => /\d/.test(value) || 'Password must include at least one number';
-
-
-
 
 // Start btn Add User
 
-const addUserForm = ref({
-  asset_number: '',
-  name_asset: '',
-  description_asset: '',
-  serial_asset: '',
-  name_brand_category: '',
-  name_category: '',
-  ram_size: '',
-  hard_disk_type: '',
-  capacity_hard_disk: '',
-  use_it_by: '',
-  status_asset: '',
-  did_i_check_it: '',
-  date_take: '',
-  returned_take: '',
+const addCompanyForm = ref({
+  name_company: '',
 
 });
 // Start computed
 const rules = computed(() => ({
-  asset_number: { required, minLength: minLength(3) },
-  name_asset: { required, minLength: minLength(9) },
-  serial_asset: { required, minLength: minLength(8), },
-  did_i_check_it: { required, minLength: minLength(3) },
-
-  use_it_by: { required },
-  name_brand_category: { required },
-  name_category: { required },
+  name_company: { required, minLength: minLength(3) },
 
 }))
 // End computed
 
 // Vuelidate validation object
-const v$ = useValidate(rules, addUserForm)
+const v$ = useValidate(rules, addCompanyForm)
 
-const submitAddUserForm = async () => {
+const submitAddCompanyForm = async () => {
   v$.value.$touch();
   if (!v$.value.$invalid){
-    console.log('add user data:', addUserForm.value)
+    console.log('add user data:', addCompanyForm.value)
     try {
 
       const apiClient = axios.create({
-        baseURL: 'https://foods.alkarmoshy.com/cashier_api',
+        baseURL: 'https://awnams1.pythonanywhere.com/api/v1/',
+        // baseURL: 'http://127.0.0.1:8000/api/v1/',
         headers: {
           'Authorization': `Bearer ${token}`,
           Accept: 'application/json',
@@ -102,25 +77,17 @@ const submitAddUserForm = async () => {
         },
       });
 
-      const resultOfAddUser = await apiClient.post('/users', {
-        name: addUserForm.value.name,
-        phone_number: addUserForm.value.phoneNumber,
-        branch_id: addUserForm.value.branchID,
-        password: addUserForm.value.password,
-        role: addUserForm.value.permissionID,
+      const resultOfAddUser = await apiClient.post('company/', {
+        name_company: addCompanyForm.value.name_company,
       });
 
       console.log('Form submitted successfully:', resultOfAddUser.data)
-      if (resultOfAddUser.status === 200){
+      if (resultOfAddUser.status === 201){
         setTimeout(()=>{
-          showToast(t('user_added_successfully'), 'success')
+          showToast(t('company_added_successfully'), 'success')
         }, 1000);
-        await appStore.redirectTo("Users")
-        addUserForm.value.name = "";
-        addUserForm.value.phoneNumber = "";
-        addUserForm.value.password = "";
-        addUserForm.value.branchID = "";
-        addUserForm.value.permissionID = "";
+        await appStore.redirectTo("Companies")
+        addCompanyForm.value.name_company = "";
       }
 
 

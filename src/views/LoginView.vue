@@ -80,8 +80,22 @@ const funLogin = async ()=>{
   if (!v$.value.$invalid){
     try {
 
-      const resultOfLogin = await axios.post(
+      /*const resultOfLogin = await axios.post(
           `https://awnams1.pythonanywhere.com/api/v1/login/`,
+          {
+            username: submitLoginForm.value.username,
+            password: submitLoginForm.value.password
+          },
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+          }
+      )*/
+
+      const resultOfLogin = await axios.post(
+          `http://127.0.0.1:8000/api/v1/login/`,
           {
             username: submitLoginForm.value.username,
             password: submitLoginForm.value.password

@@ -6,13 +6,13 @@
         <h6 class="col-lg-10 col-md-10 col-sm-10">{{ $t('add_department') }}</h6>
       </div>
       <div class="card-body">
-        <form @submit.prevent="submitAddUserForm">
+        <form @submit.prevent="submitAaddDepartmentForm">
           <div class="row mb-3">
             <div class="col-lg-12 col-md-12 col-sm-12 ">
-              <label for="lbltxtName" class="form-label">{{ $t('asset_department') }}</label>
-              <input v-model="addUserForm.asset_number" type="text" class="form-control" id="lbltxtName" readonly>
-              <span class="text-danger" v-if="v$.asset_number.$error">{{ $t('name_should_be_3_character') }}</span>
-            </div> <!--asset_number-->
+              <label for="lbltxtNameDep" class="form-label">{{ $t('asset_department') }}</label>
+              <input v-model="addDepartmentForm.name_department" type="text" class="form-control" id="lbltxtNameDep" required>
+              <span class="text-danger" v-if="v$.name_department.$error">{{ $t('name_should_be_3_character') }}</span>
+            </div> <!--name_department-->
           </div>
           <button type="submit" class="btn btn-primary">{{ $t('submit') }}</button>
         </form>
@@ -44,57 +44,36 @@ const { t } = useI18n()
 const appStore = useAppStore();
 
 const token = Cookies.get('tokenOfUser')
-const hasUpperCase = (value) => /[A-Z]/.test(value) || 'Password must include at least one uppercase letter';
-const hasSpecialChar = (value) => /[!@#$%^&*]/.test(value) || 'Password must include at least one special character';
-const hasNumber = (value) => /\d/.test(value) || 'Password must include at least one number';
 
 
 
 
 // Start btn Add User
 
-const addUserForm = ref({
-  asset_number: '',
-  name_asset: '',
-  description_asset: '',
-  serial_asset: '',
-  name_brand_category: '',
-  name_category: '',
-  ram_size: '',
-  hard_disk_type: '',
-  capacity_hard_disk: '',
-  use_it_by: '',
-  status_asset: '',
-  did_i_check_it: '',
-  date_take: '',
-  returned_take: '',
+const addDepartmentForm = ref({
+  name_department: '',
 
 });
 // Start computed
 const rules = computed(() => ({
-  asset_number: { required, minLength: minLength(3) },
-  name_asset: { required, minLength: minLength(9) },
-  serial_asset: { required, minLength: minLength(8), },
-  did_i_check_it: { required, minLength: minLength(3) },
+  name_department: { required, minLength: minLength(3) },
 
-  use_it_by: { required },
-  name_brand_category: { required },
-  name_category: { required },
 
 }))
 // End computed
 
 // Vuelidate validation object
-const v$ = useValidate(rules, addUserForm)
+const v$ = useValidate(rules, addDepartmentForm)
 
-const submitAddUserForm = async () => {
+const submitAaddDepartmentForm = async () => {
   v$.value.$touch();
   if (!v$.value.$invalid){
-    console.log('add user data:', addUserForm.value)
+    console.log('add user data:', addDepartmentForm.value)
     try {
 
       const apiClient = axios.create({
-        baseURL: 'https://foods.alkarmoshy.com/cashier_api',
+        baseURL: 'https://awnams1.pythonanywhere.com/api/v1/',
+        // baseURL: 'http://127.0.0.1:8000/api/v1/',
         headers: {
           'Authorization': `Bearer ${token}`,
           Accept: 'application/json',
@@ -102,25 +81,17 @@ const submitAddUserForm = async () => {
         },
       });
 
-      const resultOfAddUser = await apiClient.post('/users', {
-        name: addUserForm.value.name,
-        phone_number: addUserForm.value.phoneNumber,
-        branch_id: addUserForm.value.branchID,
-        password: addUserForm.value.password,
-        role: addUserForm.value.permissionID,
+      const resultOfAddDepartment = await apiClient.post('department/', {
+        name_department: addDepartmentForm.value.name_department,
       });
 
-      console.log('Form submitted successfully:', resultOfAddUser.data)
-      if (resultOfAddUser.status === 200){
+      console.log('Form submitted successfully:', resultOfAddDepartment.data)
+      if (resultOfAddDepartment.status === 201){
         setTimeout(()=>{
-          showToast(t('user_added_successfully'), 'success')
+          showToast(t('department_added_successfully'), 'success')
         }, 1000);
-        await appStore.redirectTo("Users")
-        addUserForm.value.name = "";
-        addUserForm.value.phoneNumber = "";
-        addUserForm.value.password = "";
-        addUserForm.value.branchID = "";
-        addUserForm.value.permissionID = "";
+        await appStore.redirectTo("Departments")
+        addDepartmentForm.value.name_department = "";
       }
 
 

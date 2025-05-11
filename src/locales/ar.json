@@ -13,7 +13,35 @@
 
 
 
-  "end_general_translate": "//////////////"
+  "end_general_translate": "//////////////",
+
+  "begin_custody_form_translate": "//////////////",
+  "custody_company_form": "عهدة",
+  "name_employee": "اسم الموظف",
+  "name_should_be_3_character": "يجب ان يحتوي الاسم على 3 احرف على الاقل",
+  "id_employee": "الهوية/الاقامة الموظف",
+  "id_should_be_3_character": "يجب ان يحتوي الرقم على 10 ارقام",
+  "name_position_employee": "المسمى الوظيفي",
+  "position_should_be_3_character": "يجب ان يحتوي المسمى الوظيفي على 3 احرف على الاقل",
+  "date": "التاريخ",
+  "date_should_be_3_character": "يجب اختيار الناريخ",
+  "custody_items": "بيانات العهدة",
+  "name_custody": "اسم العهدة",
+  "count_custody": "العدد",
+  "condition_custody": "حالة العهدة",
+  "note_custody": "الملاحظات",
+  "new_device": "جديد",
+  "used_device": "مستخدم",
+  "add_custody": "أضافة عهدة",
+  "print_custody": "طباعة",
+
+
+
+
+
+  "end_custody_form_translate": "//////////////"
+
+
 
 
 
