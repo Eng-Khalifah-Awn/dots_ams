@@ -80,7 +80,7 @@ const funLogin = async ()=>{
   if (!v$.value.$invalid){
     try {
 
-      /*const resultOfLogin = await axios.post(
+      const resultOfLogin = await axios.post(
           `https://awnams1.pythonanywhere.com/api/v1/login/`,
           {
             username: submitLoginForm.value.username,
@@ -92,9 +92,9 @@ const funLogin = async ()=>{
               'Content-Type': 'application/json',
             },
           }
-      )*/
+      )
 
-      const resultOfLogin = await axios.post(
+      /*const resultOfLogin = await axios.post(
           `http://127.0.0.1:8000/api/v1/login/`,
           {
             username: submitLoginForm.value.username,
@@ -106,7 +106,7 @@ const funLogin = async ()=>{
               'Content-Type': 'application/json',
             },
           }
-      )
+      )*/
 
       if (resultOfLogin.status === 200){
         Cookies.set("tokenOfUser", await resultOfLogin.data.access,{
